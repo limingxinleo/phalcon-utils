@@ -19,7 +19,7 @@ class Ajax
      * @param string $message 错误信息
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajaxResponse($status = 1, $data = [], $message = '')
+    public static function ajaxResponse($status = 1, $data = [], $message = '')
     {
         $out = [
             'status' => $status,
@@ -38,9 +38,9 @@ class Ajax
      * @param null $data 数据包
      * @return \Illuminate\Http\JsonResponse
      */
-    public function success($data = null)
+    public static function success($data = null)
     {
-        return $this->ajaxResponse(1, $data);
+        return self::ajaxResponse(1, $data);
     }
 
     /**
@@ -50,9 +50,9 @@ class Ajax
      * @param array $extra 额外的数据包
      * @return \Illuminate\Http\JsonResponse
      */
-    public function error($message, $extra = [])
+    public static function error($message, $extra = [])
     {
-        return $this->ajaxResponse(0, $extra, $message);
+        return self::ajaxResponse(0, $extra, $message);
     }
 
 }
