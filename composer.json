@@ -1,0 +1,14 @@
+{
+    "name": "limingxinleo/phalcon-utils",
+    "description": "This is some phalcon utils",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "limx\\phalcon\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
