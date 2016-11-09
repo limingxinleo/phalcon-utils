@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "limx\\phalcon\\": "src"
-        }
+        },
+        "files": [
+            "src/functions/helper.php"
+        ]
     },
     "require": {
         "php": ">=5.4.0"
