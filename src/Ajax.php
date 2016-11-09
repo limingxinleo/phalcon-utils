@@ -17,7 +17,7 @@ class Ajax
      * @param int $status 状态码
      * @param array $data 数据包
      * @param string $message 错误信息
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public static function ajaxResponse($status = 1, $data = [], $message = '')
     {
@@ -36,7 +36,7 @@ class Ajax
      * [success 成功的信息]
      * @author limx
      * @param null $data 数据包
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public static function success($data = null)
     {
@@ -48,7 +48,7 @@ class Ajax
      * @author limx
      * @param $message 错误提示
      * @param array $extra 额外的数据包
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public static function error($message, $extra = [])
     {
