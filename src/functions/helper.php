@@ -18,9 +18,10 @@ if (!function_exists('di')) {
      * @param $name 容器服务名
      * @return mixed
      */
-    function di($name)
+    function di($name = null)
     {
         $di = DI::getDefault();
+        if ($name == null) return $di;
         return $di[$name];
     }
 }
