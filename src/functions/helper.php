@@ -50,6 +50,20 @@ if (!function_exists('session')) {
     }
 }
 
+if (!function_exists('url')) {
+    /**
+     * [url desc]
+     * @desc 生成访问地址
+     * @author limx
+     * @param $url 地址
+     * @param array $params 参数
+     */
+    function url($action, $params = [])
+    {
+        return di('url')->get($action, $params);
+    }
+}
+
 if (!file_exists('env')) {
     /**
      * Gets the value of an environment variable. Supports boolean, empty and null.
