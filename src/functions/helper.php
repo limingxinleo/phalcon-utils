@@ -98,3 +98,27 @@ if (!file_exists('env')) {
         return $value;
     }
 }
+
+if (!function_exists('cache')) {
+
+    /**
+     * [cache desc]
+     * @desc
+     * @author limx
+     * @param null $key 缓存KEY
+     * @param null $value 缓存值 array|string
+     * @return null
+     */
+    function cache($key = null, $value = null)
+    {
+        $cache = di('cache');
+
+        if (is_null($key)) {
+            return null;
+        }
+        if (is_null($value)) {
+            return $cache->get($key);
+        }
+        return $cache->save($key, $value);
+    }
+}
