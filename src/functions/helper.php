@@ -9,6 +9,7 @@
 // | Date: 2016/11/9 Time: 14:39
 // +----------------------------------------------------------------------
 use Phalcon\Di\FactoryDefault as DI;
+use Phalcon\Logger\Adapter\File as FileLogger;
 
 if (!function_exists('di')) {
     /**
@@ -120,5 +121,22 @@ if (!function_exists('cache')) {
             return $cache->get($key);
         }
         return $cache->save($key, $value);
+    }
+}
+
+if (!function_exists('logger')) {
+
+    /**
+     * [logger desc]
+     * @desc 写入日志助手函数
+     * @author limx
+     * @param $info
+     * @param string $type
+     */
+    function logger($info, $type = 'info')
+    {
+        $dir = di('config')->application->logDir . date('Ymd');
+        $logger = new FileLogger($dir . "/logger.log");
+        call_user_func_array([$logger, $type], [$info]);
     }
 }
