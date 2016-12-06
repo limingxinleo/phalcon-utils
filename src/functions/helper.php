@@ -133,10 +133,10 @@ if (!function_exists('logger')) {
      * @param $info
      * @param string $type
      */
-    function logger($info, $type = 'info')
+    function logger($info, $type = 'info', $file = 'logger.log')
     {
         $dir = di('config')->application->logDir . date('Ymd');
-        $logger = new FileLogger($dir . "/logger.log");
+        $logger = new FileLogger($dir . "/" . $file);
         call_user_func_array([$logger, $type], [$info]);
     }
 }
