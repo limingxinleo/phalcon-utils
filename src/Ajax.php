@@ -29,7 +29,7 @@ class Ajax
         ];
 
         echo json_encode($out);
-        return false;
+        exit;
     }
 
     /**
