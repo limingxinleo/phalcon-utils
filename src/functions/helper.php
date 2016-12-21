@@ -135,8 +135,7 @@ if (!function_exists('logger')) {
      */
     function logger($info, $type = 'info', $file = 'logger.log')
     {
-        $dir = di('config')->application->logDir . date('Ymd');
-        $logger = new FileLogger($dir . "/" . $file);
-        call_user_func_array([$logger, $type], [$info]);
+        $logger = Logger::getInstance('file', $file);
+        $logger->$type($info);
     }
 }
