@@ -9,7 +9,7 @@
 // | Date: 2016/11/9 Time: 14:39
 // +----------------------------------------------------------------------
 use Phalcon\Di\FactoryDefault as DI;
-use Phalcon\Logger\Adapter\File as FileLogger;
+use limx\phalcon\Logger;
 
 if (!function_exists('di')) {
     /**
