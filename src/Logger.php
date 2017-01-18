@@ -22,10 +22,13 @@ class Logger
      * @param $type
      * @param $file
      */
-    private function __construct($type, $file)
+    private function __construct($type, $file, $dir)
     {
         try {
-            $dir = di('config')->application->logDir . date('Ymd');
+            $dir = di('config')->application->logDir . $dir;
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+            }
             $this->logger = new FileLogger($dir . "/" . $file);
         } catch (PDOException $e) {
             $this->outputError($e->getMessage());
@@ -47,16 +50,20 @@ class Logger
      * @param string $file
      * @return mixed
      */
-    public static function getInstance($type = 'file', $file = 'logger.log')
+    public static function getInstance($type = 'file', $file = 'logger.log', $dir = null)
     {
+        if (is_null($dir)) {
+            $dir = date('Ymd');
+        }
         $config = [
             'type' => $type,
             'file' => $file,
+            'dir' => $dir,
         ];
         $key = md5(json_encode($config));
 
         if (empty(self::$_instance[$key])) {
-            self::$_instance[$key] = new self($type, $file);
+            self::$_instance[$key] = new self($type, $file, $dir);
         }
         return self::$_instance[$key];
     }
