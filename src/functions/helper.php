@@ -32,6 +32,13 @@ if (!function_exists('session')) {
     /**
      * [session desc]
      * @desc 获取注册后的session服务
+     * 控制器，视图或者任何继承于 Phalcon\Di\Injectable 的组件，都可以访问session服务
+     * 故可以通过以下方式调用session
+     * 设置一个session变量    $this->session->set("user-name", "Michael");
+     * 检查session变量是否已定义    $this->session->has("user-name")；
+     * 获取session变量的值    $this->session->get("user-name");
+     * 删除session变量    $this->session->remove("user-name");
+     * 销毁全部session会话    $this->session->destroy();
      * @author limx
      * @param null $key
      * @param null $value
