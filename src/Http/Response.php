@@ -41,8 +41,8 @@ class Response
     {
         $data['status'] = $this->status;
         $data['data'] = $this->data;
-        $data['msg'] = $this->msg;
-        $data['time'] = $this->time;
+        $data['message'] = $this->msg;
+        $data['timestamp'] = $this->time;
         return $data;
     }
 
