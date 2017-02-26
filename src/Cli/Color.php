@@ -185,7 +185,7 @@ final class Color
     public static function error($msg)
     {
         $msg = 'Error: ' . $msg;
-        $space = strlen($msg) + 4;
+        $space = static::strlen($msg) + 4;
         $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
         $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
         $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
@@ -203,7 +203,7 @@ final class Color
     public static function success($msg)
     {
         $msg = 'Success: ' . $msg;
-        $space = strlen($msg) + 4;
+        $space = static::strlen($msg) + 4;
         $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
         $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
         $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
@@ -221,11 +221,23 @@ final class Color
     public static function info($msg)
     {
         $msg = 'Info: ' . $msg;
-        $space = strlen($msg) + 4;
+        $space = static::strlen($msg) + 4;
         $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
         $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
         $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
 
         return $out;
+    }
+
+    /**
+     * @desc 计算中英文婚写的字符长度
+     * @author limx
+     */
+    private static function strlen($msg)
+    {
+        if (function_exists("mb_strlen")) {
+            return (mb_strlen($msg) + strlen($msg)) / 2;
+        }
+        return strlen($msg);
     }
 }
