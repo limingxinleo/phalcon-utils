@@ -230,7 +230,7 @@ final class Color
     }
 
     /**
-     * @desc 计算中英文婚写的字符长度
+     * @desc 计算中英文混写的字符长度
      * @author limx
      */
     private static function strlen($msg)
