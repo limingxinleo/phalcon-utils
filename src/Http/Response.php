@@ -12,38 +12,13 @@ namespace limx\phalcon\Http;
 
 class Response
 {
-    private $status;
-    private $data;
-    private $msg;
-    private $time;
-
-    public function __construct()
+    public static function json($status, $data, $message)
     {
-        $this->time = time();
-    }
-
-    public function setStatus($status = 1)
-    {
-        $this->status = $status;
-    }
-
-    public function setData($data = [])
-    {
-        $this->data = $data;
-    }
-
-    public function setMsg($msg = '')
-    {
-        $this->msg = $msg;
-    }
-
-    public function json()
-    {
-        $data['status'] = $this->status;
-        $data['data'] = $this->data;
-        $data['message'] = $this->msg;
-        $data['timestamp'] = $this->time;
-        return $data;
+        $response['status'] = $status;
+        $response['data'] = $data;
+        $response['message'] = $message;
+        $response['timestamp'] = time();
+        return $response;
     }
 
     public static function send($status = 1, $data = [], $msg = '', $type = 'json')
@@ -52,11 +27,11 @@ class Response
         switch (strtolower($type)) {
             case 'json':
             default:
-                $result = new self();
-                $result->setStatus($status);
-                $result->setData($data);
-                $result->setMsg($msg);
-                return $response->setJsonContent($result->json());
+                return $response->setJsonContent(self::json(
+                    $status,
+                    $data,
+                    $msg
+                ));
         }
     }
 }
