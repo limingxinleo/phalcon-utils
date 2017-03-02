@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Demo [ WE CAN DO IT JUST THINK IT ]
+// | DB类 [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
 // +----------------------------------------------------------------------
@@ -55,18 +55,38 @@ class DB
     }
 
     /**
-     * [execute desc]
      * @desc 更新数据
      * @author limx
-     * @param $sql
-     * @param array $params
-     * @return mixed
+     * @param $sql SQL语句
+     * @param array $params 参数
+     * @param bool $withRowCount 是否返回影响的行数
+     * @return int|mixed
      */
-    public static function execute($sql, $params = [])
+    public static function execute($sql, $params = [], $withRowCount = false)
     {
         $db = di('db');
         $status = $db->execute($sql, $params);
+        if ($status && $withRowCount) {
+            $sql = "select ROW_COUNT() AS row_count;";
+            $res = self::fetch($sql);
+            if ($res) {
+                return $res['row_count'];
+            }
+            return 0;
+        }
         return $status;
+    }
+
+    /**
+     * @desc 执行Sql并返回影响的行数
+     * @author limx
+     * @param $sql
+     * @param array $params
+     * @return int|mixed
+     */
+    public static function execWithRowCount($sql, $params = [])
+    {
+        return self::execute($sql, $params, true);
     }
 
     /**
