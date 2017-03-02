@@ -23,7 +23,7 @@ if (!function_exists('di')) {
     {
         $di = DI::getDefault();
         if ($name == null) return $di;
-        return $di[$name];
+        return $di->get($name);
     }
 }
 
