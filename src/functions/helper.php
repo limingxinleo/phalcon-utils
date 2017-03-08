@@ -19,10 +19,11 @@ if (!function_exists('di')) {
      * @param $name 容器服务名
      * @return mixed
      */
-    function di($name = null)
+    function di($name = null, $isNew = false)
     {
         $di = DI::getDefault();
         if ($name == null) return $di;
+        if ($isNew === false) return $di->getShared($name);
         return $di->get($name);
     }
 }
