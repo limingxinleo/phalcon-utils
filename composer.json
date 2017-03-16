@@ -8,7 +8,7 @@
             "limx\\phalcon\\": "src"
         },
         "files": [
-            "src/functions/helper.php"
+            "src/helper.php"
         ]
     },
     "require": {
