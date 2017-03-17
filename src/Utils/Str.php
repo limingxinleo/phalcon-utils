@@ -195,18 +195,45 @@ class Str
     }
 
     /**
+     * Generate a more truly "random" alpha-numeric string.
+     *
+     * @param  int  $length
+     * @return string
+     */
+    public static function random($length = 16)
+    {
+        $string = '';
+
+        while (($len = strlen($string)) < $length) {
+            $size = $length - $len;
+
+            $bytes = random_bytes($size);
+
+            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
+        }
+
+        return $string;
+    }
+
+    /**
      * Generate a "random" alpha-numeric string.
      *
      * Should not be considered sufficient for cryptography, etc.
      *
-     * @param  int $length
+     * @deprecated since version 5.3. Use the "random" method directly.
+     *
+     * @param  int  $length
      * @return string
      */
     public static function quickRandom($length = 16)
     {
+        if (PHP_MAJOR_VERSION > 5) {
+            return static::random($length);
+        }
+
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-        return static::substr(str_shuffle(str_repeat($pool, $length)), 0, $length);
+        return substr(str_shuffle(str_repeat($pool, $length)), 0, $length);
     }
 
     /**
