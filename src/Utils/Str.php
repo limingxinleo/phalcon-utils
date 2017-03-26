@@ -2,11 +2,9 @@
 // +----------------------------------------------------------------------
 // | Utils\Str [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2017/3/16 Time: 下午9:55
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 namespace limx\phalcon\Utils;
 
@@ -197,7 +195,7 @@ class Str
     /**
      * Generate a more truly "random" alpha-numeric string.
      *
-     * @param  int  $length
+     * @param  int $length
      * @return string
      */
     public static function random($length = 16)
@@ -222,7 +220,7 @@ class Str
      *
      * @deprecated since version 5.3. Use the "random" method directly.
      *
-     * @param  int  $length
+     * @param  int $length
      * @return string
      */
     public static function quickRandom($length = 16)

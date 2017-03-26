@@ -1,12 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | DB类 [ WE CAN DO IT JUST THINK IT ]
+// | DB [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2016/11/9 Time: 18:12
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 namespace limx\phalcon;
 
@@ -16,9 +14,9 @@ class DB
 {
     /**
      * [query desc]
-     * @desc 查询结果集合
+     * @desc   查询结果集合
      * @author limx
-     * @param $sql
+     * @param       $sql
      * @param array $params
      * @return array
      */
@@ -36,9 +34,9 @@ class DB
 
     /**
      * [fetch desc]
-     * @desc 查询一条数据
+     * @desc   查询一条数据
      * @author limx
-     * @param $sql
+     * @param       $sql
      * @param array $params
      * @return array
      */
@@ -55,11 +53,11 @@ class DB
     }
 
     /**
-     * @desc 更新数据
+     * @desc   更新数据
      * @author limx
-     * @param $sql SQL语句
-     * @param array $params 参数
-     * @param bool $withRowCount 是否返回影响的行数
+     * @param       $sql          SQL语句
+     * @param array $params       参数
+     * @param bool  $withRowCount 是否返回影响的行数
      * @return int|mixed
      */
     public static function execute($sql, $params = [], $withRowCount = false)
@@ -78,9 +76,9 @@ class DB
     }
 
     /**
-     * @desc 执行Sql并返回影响的行数
+     * @desc   执行Sql并返回影响的行数
      * @author limx
-     * @param $sql
+     * @param       $sql
      * @param array $params
      * @return int|mixed
      */
@@ -91,7 +89,7 @@ class DB
 
     /**
      * [begin desc]
-     * @desc 事务开始
+     * @desc   事务开始
      * @author limx
      * @return mixed
      */
@@ -102,7 +100,7 @@ class DB
 
     /**
      * [rollback desc]
-     * @desc 事务回滚
+     * @desc   事务回滚
      * @author limx
      * @return mixed
      */
@@ -113,7 +111,7 @@ class DB
 
     /**
      * [commit desc]
-     * @desc 事务提交
+     * @desc   事务提交
      * @author limx
      * @return mixed
      */

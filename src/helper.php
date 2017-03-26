@@ -1,12 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | Demo [ WE CAN DO IT JUST THINK IT ]
+// | 助手函数 [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2016/11/9 Time: 14:39
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 use Phalcon\Di\FactoryDefault as DI;
 use limx\phalcon\Logger;
@@ -14,7 +12,7 @@ use limx\phalcon\Logger;
 if (!function_exists('di')) {
     /**
      * [di desc]
-     * @desc 获取容器对象
+     * @desc   获取容器对象
      * @author limx
      * @param $name 容器服务名
      * @return mixed
@@ -32,7 +30,7 @@ if (!function_exists('session')) {
 
     /**
      * [session desc]
-     * @desc 获取注册后的session服务
+     * @desc   获取注册后的session服务
      * 控制器，视图或者任何继承于 Phalcon\Di\Injectable 的组件，都可以访问session服务
      * 故可以通过以下方式调用session
      * 设置一个session变量    $this->session->set("user-name", "Michael");
@@ -62,9 +60,9 @@ if (!function_exists('session')) {
 if (!function_exists('url')) {
     /**
      * [url desc]
-     * @desc 生成访问地址
+     * @desc   生成访问地址
      * @author limx
-     * @param $url 地址
+     * @param       $url    地址
      * @param array $params 参数
      */
     function url($action, $params = [])
@@ -78,7 +76,7 @@ if (!file_exists('env')) {
      * Gets the value of an environment variable. Supports boolean, empty and null.
      *
      * @param  string $key
-     * @param  mixed $default
+     * @param  mixed  $default
      * @return mixed
      */
     function env($key, $default = null)
@@ -114,7 +112,7 @@ if (!function_exists('cache')) {
      * [cache desc]
      * @desc
      * @author limx
-     * @param null $key 缓存KEY
+     * @param null $key   缓存KEY
      * @param null $value 缓存值 array|string
      * @return null
      */
@@ -136,9 +134,9 @@ if (!function_exists('logger')) {
 
     /**
      * [logger desc]
-     * @desc 写入日志助手函数
+     * @desc   写入日志助手函数
      * @author limx
-     * @param $info
+     * @param        $info
      * @param string $type
      */
     function logger($info, $type = 'info', $file = 'logger.log')

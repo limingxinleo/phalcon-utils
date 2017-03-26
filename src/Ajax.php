@@ -1,12 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | Demo [ WE CAN DO IT JUST THINK IT ]
+// | Ajax [已废弃] [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2016/11/7 Time: 10:37
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 namespace limx\phalcon;
 class Ajax
@@ -14,8 +12,8 @@ class Ajax
     /**
      * [ajaxResponse 返回特定格式的json]
      * @author limx
-     * @param int $status 状态码
-     * @param array $data 数据包
+     * @param int    $status  状态码
+     * @param array  $data    数据包
      * @param string $message 错误信息
      * @return JsonResponse
      */
@@ -46,8 +44,8 @@ class Ajax
     /**
      * [error 返回错误信息]
      * @author limx
-     * @param $message 错误提示
-     * @param array $extra 额外的数据包
+     * @param       $message 错误提示
+     * @param array $extra   额外的数据包
      * @return JsonResponse
      */
     public static function error($message, $extra = [])
