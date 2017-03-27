@@ -65,7 +65,7 @@ class DB
         $db = di('db');
         $status = $db->execute($sql, $params);
         if ($status && $withRowCount) {
-            $sql = "select ROW_COUNT() AS row_count;";
+            $sql = "SELECT ROW_COUNT() AS row_count;";
             $res = self::fetch($sql);
             if ($res) {
                 return $res['row_count'];
