@@ -198,7 +198,7 @@ class Str
      * @param  int $length
      * @return string
      */
-    public static function random($length = 16)
+    private static function _random($length = 16)
     {
         $string = '';
 
@@ -223,10 +223,10 @@ class Str
      * @param  int $length
      * @return string
      */
-    public static function quickRandom($length = 16)
+    public static function random($length = 16)
     {
         if (PHP_MAJOR_VERSION > 5) {
-            return static::random($length);
+            return static::_random($length);
         }
 
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
