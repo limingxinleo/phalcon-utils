@@ -1,0 +1,87 @@
+<?php
+// +----------------------------------------------------------------------
+// | Redis类 [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
+// +----------------------------------------------------------------------
+namespace limx\phalcon;
+
+use Redis as RedisClient;
+
+class Redis
+{
+    protected static $_instance = [];
+    protected $redis;
+
+    /**
+     * Redis constructor.
+     * @param $host
+     * @param $port
+     * @param $auth
+     */
+    private function __construct($host, $port, $auth, $db)
+    {
+        try {
+            $this->redis = new RedisClient();
+            $this->redis->connect($host, $port);
+            if (!empty($auth)) {
+                $this->redis->auth($auth);
+            }
+            if ($db > 0) {
+                $this->redis->select($db);
+            }
+        } catch (PDOException $e) {
+            $this->outputError($e->getMessage());
+        }
+    }
+
+    /**
+     * 防止克隆
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * @desc   获取redis单例
+     * @author limx
+     * @param string $host
+     * @param null   $auth
+     * @param int    $db
+     * @param int    $port
+     * @return mixed
+     */
+    public static function getInstance($host = '127.0.0.1', $auth = null, $db = 0, $port = 6379)
+    {
+        $key = md5(json_encode([$host, $auth, $db, $port]));
+
+        if (empty(self::$_instance[$key])) {
+            self::$_instance[$key] = new self($host, $port, $auth, $db);
+        }
+        return self::$_instance[$key];
+    }
+
+    /**
+     * [__call desc]
+     * @author limx
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        return call_user_func_array([$this->redis, $name], $arguments);
+    }
+
+    /**
+     * 输出错误信息
+     *
+     * @param String $strErrMsg
+     */
+    private function outputError($strErrMsg)
+    {
+        throw new Exception('Redis Error: ' . $strErrMsg);
+    }
+}
