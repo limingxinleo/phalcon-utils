@@ -13,7 +13,6 @@ use PDO;
 class DB
 {
     /**
-     * [query desc]
      * @desc   查询结果集合
      * @author limx
      * @param       $sql
@@ -33,7 +32,6 @@ class DB
     }
 
     /**
-     * [fetch desc]
      * @desc   查询一条数据
      * @author limx
      * @param       $sql
@@ -88,7 +86,6 @@ class DB
     }
 
     /**
-     * [begin desc]
      * @desc   事务开始
      * @author limx
      * @return mixed
@@ -99,7 +96,6 @@ class DB
     }
 
     /**
-     * [rollback desc]
      * @desc   事务回滚
      * @author limx
      * @return mixed
@@ -110,7 +106,6 @@ class DB
     }
 
     /**
-     * [commit desc]
      * @desc   事务提交
      * @author limx
      * @return mixed
