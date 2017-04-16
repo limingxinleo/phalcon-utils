@@ -10,10 +10,22 @@
 composer require limingxinleo/phalcon-utils
 ~~~
 
-## 助手类 ##
-* Ajax              已废弃
-* DB                数据库助手类
-* Logger            日志助手类
-* Cli\Color         Cli输出颜色助手类              
-* Http\Response     Http格式化Response助手类
-* helper.php        助手函数
+## 类库介绍
+~~~
+src  
+├─Cli                   Cli相关类库
+│ └─Color.php           Cli颜色类库
+├─Http                  Web相关类库
+│ └─Response.php        Web Response类库
+├─Utils                 其他工具类库
+│ ├─Arr.php             数组相关辅助类库
+│ ├─Debug.php           调试辅助类库
+│ └─Str.php             字符串辅助类库
+├─Ajax.php              已废弃
+├─DB.php                数据库访问辅助类库
+├─helper.php            辅助函数
+├─Logger.php            日志辅助函数
+└─Redis.php             Redis辅助类库
+~~~
+
+
