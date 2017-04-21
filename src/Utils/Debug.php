@@ -36,24 +36,4 @@ class Debug
 
         echo $output;
     }
-
-    /**
-     * [color desc]
-     * @desc   为输出的字符添加颜色 用于console输出
-     * @author limx
-     * @param string $type
-     */
-    public static function color($str = '', $type = 'red')
-    {
-        $color = [
-            'red' => "\033[31;1m",
-            'green' => "\033[32;1m",
-            'yellow' => "\033[33;3m",
-            'blue' => "\033[34;3m",
-        ];
-        $end = "\033[0m";
-        return empty($color[$type]) ? $str : $color[$type] . $str . $end;
-    }
-
-
 }
