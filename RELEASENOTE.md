@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+* 增加文件工具类
 
 ### Changed
  
