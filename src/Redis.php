@@ -47,15 +47,16 @@ class Redis
     /**
      * @desc   获取redis单例
      * @author limx
-     * @param string $host
-     * @param null   $auth
-     * @param int    $db
-     * @param int    $port
+     * @param string $host   地址
+     * @param string $auth   密码
+     * @param int    $db     数据库ID
+     * @param int    $port   端口号
+     * @param string $uniqid 当相同配置，但是想新开实例时，可以赋值
      * @return mixed
      */
-    public static function getInstance($host = '127.0.0.1', $auth = null, $db = 0, $port = 6379)
+    public static function getInstance($host = '127.0.0.1', $auth = null, $db = 0, $port = 6379, $uniqid = null)
     {
-        $key = md5(json_encode([$host, $auth, $db, $port]));
+        $key = md5(json_encode([$host, $auth, $db, $port, $uniqid]));
 
         if (empty(self::$_instance[$key])) {
             self::$_instance[$key] = new self($host, $port, $auth, $db);
