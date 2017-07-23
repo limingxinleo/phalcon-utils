@@ -13,6 +13,11 @@ use PDO;
 class DB
 {
     /**
+     * @var string 定义DB服务名
+     */
+    protected static $dbServiceName = 'db';
+
+    /**
      * @desc   查询结果集合
      * @author limx
      * @param       $sql
@@ -21,7 +26,7 @@ class DB
      */
     public static function query($sql, $params = [])
     {
-        $db = di('db');
+        $db = di(static::$dbServiceName);
         $status = $db->query($sql, $params);
         $result = [];
         if ($status) {
@@ -40,7 +45,7 @@ class DB
      */
     public static function fetch($sql, $params = [])
     {
-        $db = di('db');
+        $db = di(static::$dbServiceName);
         $status = $db->query($sql, $params);
         $result = [];
         if ($status) {
@@ -60,7 +65,7 @@ class DB
      */
     public static function execute($sql, $params = [], $withRowCount = false)
     {
-        $db = di('db');
+        $db = di(static::$dbServiceName);
         $status = $db->execute($sql, $params);
         if ($status && $withRowCount) {
             $sql = "SELECT ROW_COUNT() AS row_count;";
@@ -92,7 +97,7 @@ class DB
      */
     public static function begin()
     {
-        return di('db')->begin();
+        return di(static::$dbServiceName)->begin();
     }
 
     /**
@@ -102,7 +107,7 @@ class DB
      */
     public static function rollback()
     {
-        return di('db')->rollback();
+        return di(static::$dbServiceName)->rollback();
     }
 
     /**
@@ -112,6 +117,6 @@ class DB
      */
     public static function commit()
     {
-        return di('db')->commit();
+        return di(static::$dbServiceName)->commit();
     }
 }
