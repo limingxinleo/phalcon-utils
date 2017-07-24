@@ -3,6 +3,12 @@
     "description": "This is some phalcon utils",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "李铭昕",
+            "email": "715557344@qq.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "limx\\phalcon\\": "src"

@@ -71,7 +71,7 @@ if (!function_exists('url')) {
     }
 }
 
-if (!file_exists('env')) {
+if (!function_exists('env')) {
     /**
      * Gets the value of an environment variable. Supports boolean, empty and null.
      *
