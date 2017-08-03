@@ -14,8 +14,8 @@ use Phalcon\Logger\Adapter;
 
 class Factory implements FactoryInterface
 {
-    public $config;
-    public static $instances = [];
+    protected $config;
+    protected static $instances = [];
 
     public function __construct(Config $config)
     {
