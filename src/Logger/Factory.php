@@ -8,13 +8,19 @@
 // +----------------------------------------------------------------------
 namespace limx\phalcon\Logger;
 
+use Phalcon\Config;
 use Phalcon\Logger\Adapter\File as FileLogger;
 use Phalcon\Logger\Adapter;
 
 class Factory implements FactoryInterface
 {
-
+    public $config;
     public static $instances = [];
+
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
 
     private function getClient($name, $type, $context)
     {
@@ -25,7 +31,7 @@ class Factory implements FactoryInterface
                 if (isset($context['dir'])) {
                     $dir = $context['dir'];
                 }
-                $dir = di('config')->application->logDir . $dir;
+                $dir = $this->config->application->logDir . $dir;
                 if (!is_dir($dir)) {
                     mkdir($dir, 0777, true);
                 }
