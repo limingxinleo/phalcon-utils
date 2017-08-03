@@ -60,10 +60,10 @@ class Logger
         ];
         $key = md5(json_encode($config));
 
-        if (empty(self::$_instance[$key])) {
-            self::$_instance[$key] = new self($type, $file, $dir);
+        if (empty(static::$_instance[$key]) || !(static::$_instance[$key] instanceof Logger)) {
+            static::$_instance[$key] = new Logger($type, $file, $dir);
         }
-        return self::$_instance[$key];
+        return static::$_instance[$key];
     }
 
     /**
