@@ -7,7 +7,7 @@
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 use Phalcon\Di\FactoryDefault as DI;
-use limx\phalcon\Logger;
+use limx\phalcon\Logger\Factory;
 
 if (!function_exists('di')) {
     /**
@@ -139,9 +139,20 @@ if (!function_exists('logger')) {
      * @param        $info
      * @param string $type
      */
-    function logger($info, $type = 'info', $file = 'logger.log')
+    function logger($info, $type = 'info', $name = 'logger')
     {
-        $logger = Logger::getInstance('file', $file);
-        $logger->$type($info);
+        $factory = null;
+        $logger = null;
+
+        if (di()->has('logger')) {
+            $factory = di('logger');
+        }
+        if (!($factory instanceof Factory)) {
+            $config = di('config');
+            $factory = new Factory($config);
+        }
+
+        $logger = $factory->getLogger($name);
+        return $logger->$type($info);
     }
 }
